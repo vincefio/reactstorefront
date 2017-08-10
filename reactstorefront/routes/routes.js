@@ -7,7 +7,7 @@ var Store = require("../models/Store.js")
 
 module.exports = function(app){
 
-	app.get("/api/login", function(req, res){
+	app.get("/api/guitars", function(req, res){
 		// console.log(res);
 		// console.log('hit')
 		// res.json({tst: 'hi'})

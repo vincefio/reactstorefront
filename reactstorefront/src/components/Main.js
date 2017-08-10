@@ -13,17 +13,21 @@ class Main extends React.Component {
 		super();
 
 		this.state = {
-
+			
 		};
 	}
 
 	displayItems = () => {
 		// event.preventDefault();
     console.log('clic works')
-
+    return axios.get('api/guitars').then(results => {	
+    			console.log(results.data[0])	    	
+    			//loop through dbPost to get relevant information
+		    	for(var i = 0; i < results.data.length; i++){
+		    			console.log(results.data[i].product_name + " $" + results.data[i].price)
+		    	}
+		    })
   }
-
-
 
 	render() {
 		return (
