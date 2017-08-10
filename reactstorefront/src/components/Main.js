@@ -3,6 +3,8 @@ import React from 'react';
 import { Button, Row, Col } from 'react-bootstrap'
 import style from '../css/style.css'
 import Guitar from './Guitars'
+import helper from '../utils/helpers'
+import axios from 'axios'
 
 //create our main component
 class Main extends React.Component {
@@ -18,6 +20,7 @@ class Main extends React.Component {
 	displayItems = () => {
 		// event.preventDefault();
     console.log('clic works')
+
   }
 
 

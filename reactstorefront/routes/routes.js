@@ -12,10 +12,11 @@ module.exports = function(app){
 		// console.log('hit')
 		// res.json({tst: 'hi'})
 		// res.sendFile(path.join(__dirname, "../public/login.html"));
-		  // db.Guitar.findAll({
-		  //   }).then(function(dbPost) {
-		  //     res.json(dbPost);
-		  //   });
+		  db.Store.findAll({
+		    }).then(function(dbPost) {
+		    	// console.log(dbPost)
+		      res.json(dbPost);
+		    });
 	});
 
 }
