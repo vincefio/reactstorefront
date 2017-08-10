@@ -1,7 +1,7 @@
 
 var path = require("path");
 var db = require("../models");
-var Guitar = require("../models/Guitar.js")
+var Store = require("../models/Store.js")
 // var passport = require("../server/passport");
 
 
@@ -12,10 +12,10 @@ module.exports = function(app){
 		// console.log('hit')
 		// res.json({tst: 'hi'})
 		// res.sendFile(path.join(__dirname, "../public/login.html"));
-		  db.Guitar.findAll({
-		    }).then(function(dbPost) {
-		      res.json(dbPost);
-		    });
+		  // db.Guitar.findAll({
+		  //   }).then(function(dbPost) {
+		  //     res.json(dbPost);
+		  //   });
 	});
 
 }
