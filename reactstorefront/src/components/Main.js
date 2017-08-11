@@ -15,7 +15,7 @@ class Main extends React.Component {
 
 		this.state = {
 			items: [],
-			itemPrice: []
+			// itemPrice: []
 		};
 	}
 
@@ -27,18 +27,19 @@ class Main extends React.Component {
     			var newItemPrice=[]
     			//for loop to push all of the results into the state
 		    	for(var i = 0; i < results.data.length; i++){
-		  				// var itemString = results.data[i].product_name
+		  				var itemString = results.data[i].product_name + " $" + results.data[i].price
 		    			// console.log(results.data[i].product_name + " $" + results.data[i].price)
-		    			newItems.push(results.data[i].product_name)
-		    			newItemPrice.push(results.data[i].price)
+		    			// newItems.push(results.data[i].product_name)
+		    			// newItemPrice.push(results.data[i].price)
+		    			newItems.push(itemString)
 		    	}
 
 		    	this.setState({ 
-		    			items: newItems,
-		    			itemPrice: newItemPrice
+		    			items: newItems
+		    			// itemPrice: newItemPrice
 		    	})
 		    	// console.log('results ' + results.data)		    	
-		    	console.log('items ' + this.state.itemPrice)
+		    	// console.log('items ' + this.state.itemPrice)
 		    });
   }
 
