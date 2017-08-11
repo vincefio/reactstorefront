@@ -9,13 +9,25 @@ class Guitar extends React.Component {
 		super();
 
 		this.state = {
-
+			// visible: false
 		};
+
+		
 	}
 
 	render (){
 		return(
-			<h1>Guitars</h1>
+
+			
+				<div className="container">
+				<h1>Guitars</h1>
+					<Row bsClass="row">
+						<Col xs={8} md={8} className="guitarBox"> 
+							<div className="guitars"></div>
+							<p>{this.props.available}</p>
+						</Col>
+					</Row>
+				</div>
 		);
 	}
 }

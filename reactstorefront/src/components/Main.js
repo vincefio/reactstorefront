@@ -5,6 +5,7 @@ import style from '../css/style.css'
 import Guitar from './Guitars'
 import helper from '../utils/helpers'
 import axios from 'axios'
+import { Route, Link } from 'react-router-dom'
 
 //create our main component
 class Main extends React.Component {
@@ -13,20 +14,32 @@ class Main extends React.Component {
 		super();
 
 		this.state = {
-			
+			items: [],
+			itemPrice: []
 		};
 	}
 
 	displayItems = () => {
 		// event.preventDefault();
-    console.log('clic works')
     return axios.get('api/guitars').then(results => {	
-    			console.log(results.data[0])	    	
-    			//loop through dbPost to get relevant information
+
+    			var newItems=[]
+    			var newItemPrice=[]
+    			//for loop to push all of the results into the state
 		    	for(var i = 0; i < results.data.length; i++){
-		    			console.log(results.data[i].product_name + " $" + results.data[i].price)
+		  				// var itemString = results.data[i].product_name
+		    			// console.log(results.data[i].product_name + " $" + results.data[i].price)
+		    			newItems.push(results.data[i].product_name)
+		    			newItemPrice.push(results.data[i].price)
 		    	}
-		    })
+
+		    	this.setState({ 
+		    			items: newItems,
+		    			itemPrice: newItemPrice
+		    	})
+		    	// console.log('results ' + results.data)		    	
+		    	console.log('items ' + this.state.itemPrice)
+		    });
   }
 
 	render() {
@@ -46,7 +59,9 @@ class Main extends React.Component {
 						</Col>
 
 						<Col xs={8} className="itemList">
-
+						 {/*Passing items to Guitar component as props */}
+							<Guitar available={this.state.items}/>
+						 
 						</Col>
 
 					</Row>
