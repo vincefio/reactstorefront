@@ -25,18 +25,23 @@ class Main extends React.Component {
 
     			var newItems=[]
     			var newItemPrice=[]
+    			var itemObject={}
+    	
     			//for loop to push all of the results into the state
 		    	for(var i = 0; i < results.data.length; i++){
-		  				var itemString = results.data[i].product_name + " $" + results.data[i].price
-		    			// console.log(results.data[i].product_name + " $" + results.data[i].price)
-		    			// newItems.push(results.data[i].product_name)
-		    			// newItemPrice.push(results.data[i].price)
+		  				var itemString = results.data[i].product_name + " $" + results.data[i].price + " "
+		  				// newItems.push(results.data[i].product_name)
 		    			newItems.push(itemString)
 		    	}
 
+		    	//set the item list to an array to render with guitar component
+		    	var guitarList = newItems.map((guitar) =>
+						<li>{guitar}</li>
+					);
+
 		    	this.setState({ 
-		    			items: newItems
-		    			// itemPrice: newItemPrice
+		    			items: newItems,
+		    			itemPrice: newItemPrice
 		    	})
 		    	// console.log('results ' + results.data)		    	
 		    	// console.log('items ' + this.state.itemPrice)

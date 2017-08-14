@@ -9,14 +9,14 @@ class Guitar extends React.Component {
 		super();
 
 		this.state = {
-			list: ""
+				list: ""
 		};
 	}
 
 	showGuitars = (props) =>{
 			var guitarList = "<div>";
-	    for(var i =0; i < props.available.length; i++){
-	    	guitarList += "<h2>" + props.available[i] + "</h2>"
+	    for(var i =0; i < this.props.available.length; i++){
+	    	guitarList += "<h2>" + this.props.available[i] + "</h2>"
 
 	    }
 	  
@@ -24,11 +24,16 @@ class Guitar extends React.Component {
 
 		componentDidUpdate(props){
 		console.log("Component Updated");
-		console.log(this.props.available);
-		var guitarList = "<div>";
-	    for(var i =0; i < this.props.available.length; i++){
-	    	guitarList += "<h2>" + this.props.available[i] + "</h2>"
-	    }
+		// console.log("props " + this.props.available);
+		var guitarList = this.props.available.map((guitar) =>
+			<li>{guitar}</li>
+		);
+		// var guitarList = "<div>";
+	 //    for(var i =0; i < this.props.available.length; i++){
+	 //    	guitarList += "<h2>" + this.props.available[i] + "</h2>"
+
+	 //    }
+	    // this.setState({list: guitarList})
 	    console.log("list " + guitarList)
 		}
 
@@ -41,9 +46,9 @@ class Guitar extends React.Component {
 					<Row bsClass="row">
 						<Col xs={8} md={8} className="guitarBox"> 
 							<div className="guitars">
-
+								<ul>{guitarList}</ul>
 							</div>
-							{/*this.props.available*/}
+							{this.props.available}
 						</Col>
 					</Row>
 				</div>
