@@ -3,10 +3,6 @@ module.exports = function(sequelize, DataTypes) {
     product_name: {
       type: DataTypes.STRING,
       allowNull: false
-      // ,
-      // validate: {
-      //   len: [1]
-      // }
     },
     department_name: {
       type: DataTypes.STRING,

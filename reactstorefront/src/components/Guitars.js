@@ -27,10 +27,10 @@ class Guitar extends React.Component {
 		return(
 
 			
-				<div className="container">
-				<h1>Guitars</h1>
+				<div className="container">			
 					<Row bsClass="row">
-						<Col xs={8} md={8} className="guitarBox"> 
+						<Col  className="guitarBox">
+							<h1>{this.props.header}</h1> 
 							{this.props.available}
 						</Col>
 					</Row>

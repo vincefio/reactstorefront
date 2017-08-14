@@ -15,42 +15,33 @@ class Main extends React.Component {
 
 		this.state = {
 			items: [],
-			// itemPrice: []
+			current: ""
 		};
 	}
 
-	displayItems = () => {
+	displayGuitars = () => {
 		// event.preventDefault();
     return axios.get('api/guitars').then(results => {	
 
     			var newItems=[]
     			var newItemPrice=[]
     			
-    	
     			//for loop to push all of the results into the state
     			//this combines the price and name into a string
 		    	for(var i = 0; i < results.data.length; i++){
 		  				var itemString = results.data[i].product_name + " $" + results.data[i].price + " "
 		    			newItems.push(itemString)
 		    	}
-
-		    	//attempt at putting all data in each array place to have more options w data
-    	  // 	for(var i = 0; i < results.data.length; i++){
-	  				// var itemObject={}
-
-	    		// 	newItems.push(results.data[i])
-		    	// }
-		    	// console.log("new items " + newItems)
-		    	
 		    	//set the item list to an array to render with guitar component
 		    	//.map sets every item in the items Array to a li
 		    	var guitarList = newItems.map((guitar) =>
-						<li>{guitar}</li>
+		    		//.toString is used bc a key is needed in React
+						<li key={guitar.toString()}>{guitar}</li>
 					);
 
 		    	this.setState({ 
 		    			items: guitarList,
-		    			itemPrice: newItemPrice
+		    			current: "Guitars"
 		    	})
 		    	// console.log('results ' + results.data)		    	
 		    	// console.log('items ' + this.state.itemPrice)
@@ -66,16 +57,24 @@ class Main extends React.Component {
 				
 				<div className="container">
 					<Row bsClass="row">
-						<Col xs={4} md={4} className="directoryBox"> 
-							<Button bsSize="lg" onClick={this.displayItems}
+						<Col xs={4} xsOffset={1} className="directoryBox"> 
+							<Button bsSize="lg" onClick={this.displayGuitars}
 							block>
 								Guitars
 							</Button>
+							<Button bsSize="lg" onClick={this.displayGuitars}
+							block>
+								Bass Guitars
+							</Button>
+							<Button bsSize="lg" onClick={this.displayGuitars}
+							block>
+								Drums
+							</Button>
 						</Col>
 
-						<Col xs={8} className="itemList">
+						<Col xs={5} xsOffset={2} className="itemList">
 						 {/*Passing items to Guitar component as props */}
-							<Guitar available={this.state.items}/>
+							<Guitar available={this.state.items} header={this.state.current}/>
 						 
 						</Col>
 
