@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Store = sequelize.define("Store", {
+  var Bass = sequelize.define("Bass", {
     product_name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -18,5 +18,5 @@ module.exports = function(sequelize, DataTypes) {
 
   })
   
-  return Store;
+  return Bass;
 };
